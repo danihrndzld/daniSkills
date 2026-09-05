@@ -9,6 +9,50 @@ A catalog of every [Claude Code](https://claude.com/claude-code) skill in my set
 
 Either path produces the same thing: a folder containing a `SKILL.md` (YAML frontmatter with `name` + `description`, then instructions) under `~/.claude/skills/` (global) or `.claude/skills/` (per-project). That's the entire discovery mechanism — Claude Code just walks those folders.
 
+## Quickstart — bootstrap prompt for a new machine
+
+Don't want to read the tables below? Paste this whole block into a fresh Claude Code session on any machine (Windows, macOS, or Linux). It checks what's available, installs what it can, and then installs sections 1–3 (OMC, Compound Engineering, all six Matt Pocock skills) using whichever method actually works on that machine.
+
+```
+You're bootstrapping a new machine with a specific set of Claude Code skills from
+https://github.com/danihrndzld/daniSkills — follow these steps in order.
+
+STEP 1 — Check tools.
+Determine whether `git` is on PATH, and whether `node`/`npx` are on PATH. Report the
+version of each if found.
+
+STEP 2 — Install what's missing, if you safely can.
+If `git` is missing, try the best method for this OS: `winget install --id Git.Git -e`
+on Windows, `xcode-select --install` (or `brew install git` if Homebrew exists) on
+macOS, `apt-get install -y git` / `dnf install -y git` / `pacman -S git` on Linux.
+If `node`/`npx` are missing, try `winget install OpenJS.NodeJS.LTS` on Windows,
+`brew install node` on macOS, or the OS package manager / nvm on Linux.
+Ask me for confirmation before anything that needs admin/sudo privileges. If an
+install fails or isn't possible, move on rather than getting stuck — this is best
+effort, not required.
+
+STEP 3 — Report.
+Tell me plainly what's usable right now (git: yes/no + version, node/npx: yes/no +
+version) and what you attempted, and whether each attempt succeeded or failed.
+
+STEP 4 — Install the skills.
+Fetch https://github.com/danihrndzld/daniSkills (clone it, or read the README
+directly) and follow ONLY sections 1, 2, and 3 of its README:
+  - Section 1: oh-my-claudecode (OMC)
+  - Section 2: Compound Engineering
+  - Section 3: Matt Pocock skills — install all six (grill-me, grill-with-docs, tdd,
+    improve-codebase-architecture, setup-matt-pocock-skills, handoff)
+Do not touch section 4 onward.
+For each section, use its "Normal way" commands if `/plugin` and/or `node`/`npx` are
+available; otherwise use its "Manual (no Node.js)" commands, picking the PowerShell
+block on Windows or the macOS/Linux block everywhere else — match whichever this
+machine's tool-check in Step 1/2 actually landed on.
+
+STEP 5 — Confirm.
+List exactly which skills ended up installed (and where — `~/.claude/skills/<name>`
+or via `/plugin`), and flag anything you had to skip and why.
+```
+
 ## TL;DR — the three installers
 
 | Ecosystem | What it is | Normal install |
